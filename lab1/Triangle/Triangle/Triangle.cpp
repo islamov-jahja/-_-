@@ -1,5 +1,5 @@
 // Triangle.cpp: определяет точку входа для консольного приложения.
-//
+// Студент ПС-31 Исламов Яхья
 #include "stdafx.h"
 #include "FuctionsForTriangle.h"
 using namespace std;
