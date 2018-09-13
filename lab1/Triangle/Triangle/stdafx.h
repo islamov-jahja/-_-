@@ -9,7 +9,11 @@
 
 #include <stdio.h>
 #include <tchar.h>
-
+#include <string>
+#include <iostream>
+#include <cmath>
+#include <limits>
+using namespace std;
 
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы

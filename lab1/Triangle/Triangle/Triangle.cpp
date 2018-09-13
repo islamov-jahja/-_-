@@ -1,25 +1,26 @@
 // Triangle.cpp: определяет точку входа для консольного приложения.
 //
-
 #include "stdafx.h"
-#include <string>
-#include <iostream>
-#include <cmath>
-#include <limits>
+#include "FuctionsForTriangle.h"
 using namespace std;
 
 const int INPUT_ERROR = 1;
 
-bool StringIsFloat(string vertexInString);
-bool TriangleExists(float a, float b, float c);
-bool IsEquilateralTriangle(float a, float b, float c);
-bool IsIsoscelesTriangle(float a, float b, float c);
-int main()
+const int COUNT_OF_ARGUMENTS = 4;
+int main(int argc, char *argv[])
 {
-	cout << "Enter the sides of the triangle through a space" << endl;
+	if (argc != COUNT_OF_ARGUMENTS)
+	{
+		cout << "wrong number of arguments, they should be 3";
+		return INPUT_ERROR;
+	}
+
+
 	float long1, long2, long3;
 	string longInString1, longInString2, longInString3;
-	cin >> longInString1 >> longInString2 >> longInString3;
+	longInString1 = argv[1];
+	longInString2 = argv[2];
+	longInString3 = argv[3];
 	
 	if (StringIsFloat(longInString1) && StringIsFloat(longInString2) && StringIsFloat(longInString3))
 	{
@@ -33,60 +34,14 @@ int main()
 	if (TriangleExists(long1, long2, long3))
 	{
 		if (IsEquilateralTriangle(long1, long2, long3))
-			cout << "Equilateral triangle";
+			cout << "equilateral triangle";
 		else if (IsIsoscelesTriangle(long1, long2, long3))
-			cout << "Isosceles triangle";
+			cout << "isosceles triangle";
 		else
-			cout << "Triangle";
+			cout << "simple triangle";
 	}
+	else
+		cout << "there is no such triangle";
 
-	system("pause");
     return 0;
-}
-
-
-bool StringIsFloat(string longInString)
-{
-	int countOfPoints = 0;
-
-	for (int i = 0; i < longInString.size(); i++)
-	{
-
-		if ((longInString[i] < '0' || longInString[i] > '9') && longInString[i] != '.')
-			return false;
-
-		if (longInString[i] == '.')
-			countOfPoints++;
-
-		if (countOfPoints > 1)
-			return false;
-	}
-
-	return true;
-}
-
-bool TriangleExists(float a, float b, float c)
-{
-	if (a + b <= c || a + c <= b || c + b <= a)
-		return false;
-	else
-		return true;
-}
-
-
-bool IsEquilateralTriangle(float a, float b, float c)
-{
-	if (fabs(a - b) < numeric_limits<double>::epsilon() && fabs(a - c) < numeric_limits<double>::epsilon())
-		return true;
-	else
-		return false;
-}
-
-bool IsIsoscelesTriangle(float a, float b, float c)
-{
-	if (fabs(a - b) < numeric_limits<double>::epsilon() || fabs(a - c) < numeric_limits<double>::epsilon()
-		|| fabs(b - c) < numeric_limits<double>::epsilon())
-		return true;
-	else
-		return false;
 }
