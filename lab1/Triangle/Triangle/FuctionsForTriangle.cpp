@@ -8,10 +8,10 @@ bool StringIsFloat(string longInString)
 	for (int i = 0; i < longInString.size(); i++)
 	{
 
-		if ((longInString[i] < '0' || longInString[i] > '9') && longInString[i] != '.')
+		if ((longInString[i] < '0' || longInString[i] > '9') && longInString[i] != '.' && longInString[i] != ',')
 			return false;
 
-		if (longInString[i] == '.')
+		if (longInString[i] == '.' || longInString[i] ==',')
 			countOfPoints++;
 
 		if (countOfPoints > 1)
@@ -21,7 +21,7 @@ bool StringIsFloat(string longInString)
 	return true;
 }
 
-bool TriangleExists(float a, float b, float c)
+bool TriangleExists(double a, double b, double c)
 {
 	if (a + b <= c || a + c <= b || c + b <= a)
 		return false;
@@ -30,7 +30,7 @@ bool TriangleExists(float a, float b, float c)
 }
 
 
-bool IsEquilateralTriangle(float a, float b, float c)
+bool IsEquilateralTriangle(double a, double b, double c)
 {
 	if (fabs(a - b) < numeric_limits<double>::epsilon() && fabs(a - c) < numeric_limits<double>::epsilon())
 		return true;
@@ -38,7 +38,7 @@ bool IsEquilateralTriangle(float a, float b, float c)
 		return false;
 }
 
-bool IsIsoscelesTriangle(float a, float b, float c)
+bool IsIsoscelesTriangle(double a, double b, double c)
 {
 	if (fabs(a - b) < numeric_limits<double>::epsilon() || fabs(a - c) < numeric_limits<double>::epsilon()
 		|| fabs(b - c) < numeric_limits<double>::epsilon())

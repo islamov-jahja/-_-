@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	}
 
 
-	float long1, long2, long3;
+	double long1, long2, long3;
 	string longInString1, longInString2, longInString3;
 	longInString1 = argv[1];
 	longInString2 = argv[2];
@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
 		long3 = stof(longInString3);
 	}
 	else
+	{
+		cout << "error input";
 		return INPUT_ERROR;
+	}
 
 	if (TriangleExists(long1, long2, long3))
 	{
