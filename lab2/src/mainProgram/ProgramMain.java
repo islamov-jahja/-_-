@@ -8,6 +8,7 @@ import org.jsoup.Jsoup;
 import java.net.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import java.util.Date;
 
 
 public class ProgramMain {
@@ -21,6 +22,7 @@ public class ProgramMain {
         String domen = getDomen(url);
         URL urlForConnection = null;
         HttpURLConnection connection;
+
         int statusCode;
 
         int i = 0;
@@ -51,6 +53,9 @@ public class ProgramMain {
             }
         }
 
+        Date today = new Date();
+        brokenLinksF.write(today.toString());
+        normalLinksF.write(today.toString());
         brokenLinksF.close();
         normalLinksF.close();
     }
